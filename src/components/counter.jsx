@@ -1,24 +1,19 @@
 import React, { Component } from "react";
 
 class Counter extends Component {
-  // state = {
-  //   value: this.props.counter.value
-  //   // tags: ["tag1", "tag2", "tag3"]
-  // };
+  componentDidUpdate(prevProps, prevState) {
+    console.log("prevProps", prevProps);
+    console.log("prevState", prevState);
+  }
 
-  // //   constructor() {
-  // //     super();
-  // //     this.handleIncrement = this.handleIncrement.bind(this);
-  // //   }
-
-  // handleIncrement = () => {
-  //   this.setState({ value: this.state.value + 1 });
-  // };
-
+  componentWillUnmount() {
+    console.log("Counter - Unmount");
+  }
   render() {
+    console.log("Counter - Rendered");
+
     return (
-      <React.Fragment>
-        <h4>Counter#{this.props.counter.id}</h4>
+      <div>
         <span className={this.getBadgeClassColor()}>{this.formatValue()}</span>
         <button
           onClick={() => this.props.onIncrement(this.props.counter)}
@@ -32,7 +27,7 @@ class Counter extends Component {
         >
           Delete
         </button>
-      </React.Fragment>
+      </div>
     );
   }
 
